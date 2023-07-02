@@ -10,6 +10,9 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
+    public: {
+      HOST_URL: process.env.HOST_URL
+    },
     gptKey: process.env.GPT_KEY
   }
 })

@@ -2,7 +2,7 @@
 
 const userInput = ref('')
 
-const emits = defineEmits(['emailInput', 'passwordInput'])
+const emits = defineEmits(['emailInput', 'passwordInput', 'checkPassword'])
 const { label, placeholder } = defineProps<{
   label: string
   placeholder?: string
@@ -17,6 +17,9 @@ function passInputValue() {
     case '密碼':
       emits('passwordInput', userInput.value)
       break
+    case '再次確認密碼':
+      emits('checkPassword', userInput.value)
+      break
   }
 }
 </script>
@@ -26,7 +29,7 @@ function passInputValue() {
     <label class="label">
       <span class="label-text">{{ label }}</span>
       <span class="label-text">
-        <slot/>
+        <slot></slot>
       </span>
     </label>
     <input
@@ -34,6 +37,13 @@ function passInputValue() {
       v-model="userInput"
       :type="type ? type : 'text'" 
       :placeholder="placeholder" 
-      class="input input-bordered input-primary w-full max-w-xs" />
+      class="input input-bordered input-primary w-full max-w-xs"
+    />
+    <label class="label">
+      <span class="label-text-alt"></span>
+      <span class="label-text-alt">
+        <slot name="bottomRight"></slot>
+      </span>
+    </label>
   </div>
 </template>

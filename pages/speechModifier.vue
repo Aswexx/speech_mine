@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+// definePageMeta({
+//   middleware: ['auth']
+// })
+
 const cause = ref('')
 const modified = ref('')
 const loading = ref(false)

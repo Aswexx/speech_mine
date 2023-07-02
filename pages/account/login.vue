@@ -81,29 +81,34 @@ function changeType() {
       :placeholder="'輸入密碼'"
       :type="passwordInputType"
     >
-      <Icon
-        v-if="passwordInputType === 'password'"
-        @click="changeType"
-        class="cursor-pointer"
-        name="ic:outline-remove-red-eye"
-        color="#11EE66"
-        size="18"
-      />
+      
+        <Icon
+          v-if="passwordInputType === 'password'"
+          @click="changeType"
+          class="cursor-pointer"
+          name="ic:outline-remove-red-eye"
+          color="#11EE66"
+          size="18"
+        />
+  
+        <Icon
+          v-else
+          @click="changeType"
+          class="cursor-pointer"
+          name="ant-design:eye-invisible-outlined"
+          color="#11EE66"
+          size="18"
+        />
 
-      <Icon
-        v-else
-        @click="changeType"
-        class="cursor-pointer"
-        name="ant-design:eye-invisible-outlined"
-        color="#11EE66"
-        size="18"
-      />
-
+        <template v-if="isLogin" #bottomRight>
+          <span class="cursor-pointer underline" @click="navigateTo('/account/recover')">忘記密碼</span>
+        </template>
     </TextInput>
 
     <button class="btn btn-secondary" @click="formSubmit">
       {{ isLogin? '登入' : '註冊' }}
     </button>
+
     <p class="italic underline cursor-pointer"
       @click="isLogin = !isLogin"
     >
