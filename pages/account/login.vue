@@ -31,7 +31,6 @@ async function signUp() {
 
 async function login() {
   alert('觸發登入')
-  console.log(email.value, password.value)
   const { data, error } = await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value
@@ -41,10 +40,17 @@ async function login() {
   console.log('error', error)
 
   if (!error) {
+    // 同步 auth user 與 public user 資料
+    await useFetch('/api/users', {
+      method: 'post',
+      body: {
+        userId: data.user.id,
+        email: data.user.email
+      }
+    })
     navigateTo('/')
   }
 }
-
 
 function handleEmailInput(inputValue: string) {
   email.value = inputValue

@@ -10,7 +10,6 @@ export default defineEventHandler(async (event) => {
   const { cause } = await readBody(event)
   const question = ''
   const attitude = '客氣且簡短'
-  // const cause = '註冊資料不完善'
   const modifiedPrompt = `
     我需要你作為遊戲產品的客服，在線上即時通訊軟體中回答使用者的問題，
     假設使用者反映了${question}問題，

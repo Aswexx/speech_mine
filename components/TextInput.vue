@@ -2,7 +2,7 @@
 
 const userInput = ref('')
 
-const emits = defineEmits(['emailInput', 'passwordInput', 'checkPassword'])
+const emits = defineEmits(['emailInput', 'passwordInput', 'checkPassword', 'normalInput'])
 const { label, placeholder } = defineProps<{
   label: string
   placeholder?: string
@@ -20,8 +20,14 @@ function passInputValue() {
     case '再次確認密碼':
       emits('checkPassword', userInput.value)
       break
+    default:
+      emits('normalInput', userInput.value)
   }
 }
+
+defineExpose({
+  userInput
+})
 </script>
 
 <template>

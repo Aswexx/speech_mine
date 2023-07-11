@@ -20,6 +20,9 @@
   },
   "dependencies": {
     "@nuxtjs/supabase": "^0.3.7",
-    "openai": "^3.3.0"
+    "@prisma/client": "^4.16.2",
+    "fastest-levenshtein": "^1.0.16",
+    "openai": "^3.3.0",
+    "prisma": "^4.16.2"
   }
 }

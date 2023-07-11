@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id
+  name      String   @unique
+  email     String   @unique @db.VarChar(50)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp
+
+  book Book[]
+}
+
+model Book {
+  id          String  @id @default(cuid())
+  name        String  @db.VarChar(20)
+  description String? @db.VarChar(50)
+  color       String  @default("#FFC072")
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @map("user_id")
+
+  contain Contain[]
+}
+
+model Speech {
+  id      String @id @default(cuid())
+  content String @unique @db.VarChar(100)
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp
+
+  contain Contain[]
+  marking Marking[]
+}
+
+model Contain {
+  id String @id @default(cuid())
+
+  book   Book   @relation(fields: [bookId], references: [id])
+  bookId String @map("book_id")
+
+  speech   Speech @relation(fields: [speechId], references: [id], onDelete: Cascade)
+  speechId String @map("speech_id")
+}
+
+model Marking {
+  id String @id @default(cuid())
+
+  speech   Speech @relation(fields: [speechId], references: [id], onDelete: Cascade)
+  speechId String @map("speech_id")
+
+  tag   Tag    @relation(fields: [tagId], references: [id])
+  tagId String @map("marking_id")
+}
+
+model Tag {
+  id    String @id @default(cuid())
+  name  String @unique @db.VarChar(10)
+  color String @default("#010109") @db.VarChar(10)
+
+  marking Marking[]
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp
+}
