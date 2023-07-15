@@ -16,7 +16,6 @@ const userInfo = useState<{
 const { getBooksByUserId, getSpeechTags } = useBooks()
 
 onMounted(async () => {
-  // useBooks().value = await useFetch('/api/books')
   await getBooksByUserId(user.value?.id)
   await getSpeechTags()
 })

@@ -14,15 +14,10 @@ function formSubmit() {
 }
 
 async function signUp() {
-  alert('觸發註冊')
-  console.log(email.value, password.value)
   const { data, error } = await supabase.auth.signUp({
     email: email.value,
     password: password.value
   })
-
-  console.log('user', data)
-  console.log('error', error)
 
   if (!error) {
     navigateTo('/')

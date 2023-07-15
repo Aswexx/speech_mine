@@ -101,10 +101,11 @@ function changeColor() {
           <span class="cursor-pointer" @click="isEditing = true">
             <Icon
               name="material-symbols:box-edit-outline-rounded"
+              color="#18B4F7"
               size="24"
             />
           </span>
-          <button class="btn btn-primary" @click="navigateTo(`/mybooks/${book.id}`)">Watch</button>
+          <button class="btn btn-primary" @click="navigateTo(`/mybooks/${book.id}`)">查看</button>
         </template>
       </div>
   
