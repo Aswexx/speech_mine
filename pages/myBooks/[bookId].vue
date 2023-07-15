@@ -32,7 +32,7 @@ onMounted(async() => {
 
 <template>
   <NuxtLayout>
-    <div class="border border-green-600 p-4 flex-1">
+    <div class="p-4 flex-1">
       <!-- filter tags -->
       <div class="ml-auto w-1/2 grid grid-cols-3 gap-0.5">
         <Tag
