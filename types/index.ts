@@ -21,4 +21,11 @@ declare global {
       }[],
     }
   }
+
+  interface UserInfo {
+    id: string,
+    name: string,
+    email: string,
+    createdAt: string
+  }
 }

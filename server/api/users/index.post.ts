@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const initName = crypto.randomBytes(4).toString('hex').slice(0,8)
 
   try {
-    await prisma.user.upsert({
+    return await prisma.user.upsert({
       where: { id: userId },
       update: {},
       create: {
@@ -16,8 +16,7 @@ export default defineEventHandler(async (event) => {
         email
       }
     })
-    console.log(userId)
-    return 'ok'
+    
   } catch (err) {
     console.error(err)
   }

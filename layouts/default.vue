@@ -1,7 +1,7 @@
 <template>
-  <div class="mx-auto h-[100dvh] flex flex-col border border-red-700">
+  <div class="mx-auto h-[100dvh] flex flex-col">
     <NavBar/>
-    <div class="flex-1 flex border border-blue-700">
+    <div class="flex-1 flex">
       <SideMenu/>
       <slot/>
     </div>

@@ -40,9 +40,9 @@ defineExpose({
     </label>
     <input
       @blur="passInputValue"
-      v-model="userInput"
-      :type="type ? type : 'text'" 
-      :placeholder="placeholder" 
+      v-model.trim="userInput"
+      :type="type ? type : 'text'"
+      :placeholder="placeholder"
       class="input input-bordered input-primary w-full max-w-xs"
     />
     <label class="label">

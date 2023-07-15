@@ -78,12 +78,12 @@ function changeColor() {
       <div class="card-body">
         <template v-if="isEditing">
           <input type="text" 
-            class="outline-none border-b-2 border-b-red-700 p-0.5 bg-[#0F1729]
+            class="outline-none border-b-2 border-b-gray-700 p-0.5 bg-[#0F1729]
               text-xl font-bold"
             v-model="editing.title"
           >
           <input type="text" 
-            class="outline-none border-b-2 border-b-red-700 p-0.5 bg-[#0F1729]"
+            class="outline-none border-b-2 border-b-gray-700 p-0.5 bg-[#0F1729]"
             v-model="editing.description"
           >
         </template>

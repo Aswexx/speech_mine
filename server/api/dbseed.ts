@@ -94,7 +94,8 @@ async function createGreetings(speechArr: string[], tagIdArr: string[]) {
 async function createNewTags() {
   const tags = [
     {
-      name: '索取會員資料'
+      name: '技術問題',
+      color: '#000000'
     },
   ]
   const result = await prisma.tag.createMany({

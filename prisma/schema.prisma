@@ -33,7 +33,7 @@ model Book {
 
 model Speech {
   id      String @id @default(cuid())
-  content String @unique @db.VarChar(100)
+  content String @unique @db.VarChar(200)
 
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamp
   updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp
@@ -50,6 +50,8 @@ model Contain {
 
   speech   Speech @relation(fields: [speechId], references: [id], onDelete: Cascade)
   speechId String @map("speech_id")
+
+  @@unique([bookId, speechId])
 }
 
 model Marking {

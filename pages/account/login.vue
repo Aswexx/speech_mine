@@ -30,24 +30,22 @@ async function signUp() {
 }
 
 async function login() {
-  alert('觸發登入')
   const { data, error } = await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value
   })
 
-  console.log('user', data)
-  console.log('error', error)
-
   if (!error) {
     // 同步 auth user 與 public user 資料
-    await useFetch('/api/users', {
+    const { data: user, error } = await useFetch('/api/users', {
       method: 'post',
       body: {
         userId: data.user.id,
         email: data.user.email
       }
     })
+
+    useState('userInfo', () => user.value)
     navigateTo('/')
   }
 }

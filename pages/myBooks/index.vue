@@ -10,6 +10,8 @@ const titleInput = ref<{ userInput: string }>()
 const descriptionInput = ref<{ userInput: string }>()
 
 async function createNewBook() {
+  if (!bookToAdd.title) return useToast('alert-error', '話術本名稱不能為空')
+
   await useFetch('/api/books', {
     method: 'post',
     body: {
@@ -31,7 +33,7 @@ const books = useState<Book[]>('books')
 
 <template>
   <NuxtLayout>
-    <div class="border border-green-600 p-4 flex-1">
+    <div class="p-4 flex-1">
       <!-- book create modal -->
       <div>
         <button class="btn" onclick="my_modal_3.showModal()">新增話術本</button>
