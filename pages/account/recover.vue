@@ -8,7 +8,6 @@ function handleEmailInput(inputValue: string) {
 
 async function requestReset() {
   // TODO: 檢查 Email
-  alert(email.value)
   const { error } = await supabase.auth.resetPasswordForEmail(email.value, {
     redirectTo: `${useRuntimeConfig().public.HOST_URL}/account/update`
   })

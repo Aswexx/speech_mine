@@ -19,10 +19,10 @@ watch(interactPrompts.value, (newVal) => {
 
 <template>
   <div class="toast toast-top z-50">
-    <div v-for="alert in interactPrompts" :key="alert.content" class="alert" :class="alert.type">
+    <div v-for="alert in interactPrompts" :key="alert.content" class="alert text-white" :class="alert.type">
       <Icon 
         v-if="alert.type === 'alert-success'"
-        name="ic:twotone-check-circle-outline" size="24" color="#24d317"
+        name="ic:twotone-check-circle-outline" size="24" color="#108910"
       />
 
       <Icon

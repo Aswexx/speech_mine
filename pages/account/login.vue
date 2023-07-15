@@ -19,6 +19,8 @@ async function signUp() {
     password: password.value
   })
 
+  useToast('alert-info', '請至註冊信箱收取驗證信')
+
   if (!error) {
     navigateTo('/')
   }
